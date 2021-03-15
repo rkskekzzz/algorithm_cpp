@@ -6,7 +6,7 @@
 
 size_t T;
 size_t N;
-std::vector<std::vector<int>> ip;
+std::vector<std::vector<int> > ip;
 
 void output()
 {

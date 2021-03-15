@@ -6,7 +6,7 @@
 
 size_t T;
 size_t N;
-std::vector<std::vector<int>> ip;
+std::vector<std::vector<int> > ip;
 
 void output()
 {
@@ -16,7 +16,7 @@ void output()
 void input()
 {
 	std::cin >> N;
-	ip = std::vector(N + 1, std::vector(2, 0));
+	ip = std::vector(N + 1, std::vector(2, 0)); 
 	for (size_t j = 0; j < N * 2; j++)
 		std::cin >> ip[(j % N) + 1][j / N];
 }
