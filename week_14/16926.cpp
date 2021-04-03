@@ -11,7 +11,6 @@ int N, M, R;
 
 void output()
 {
-	fwrite(arr, );
 	for (auto& i : arr)
 	{
 		for (auto& j : i)
