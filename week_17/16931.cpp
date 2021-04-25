@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+// 왜틀렸징 ㅜㅜ
 int wid, hei, result;
 std::vector<std::vector<int> > paper;
 
