@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 // 왜틀렸징 ㅜㅜ
 int wid, hei, result;
 std::vector<std::vector<int> > paper;
@@ -21,18 +22,22 @@ void solution()
 	// fnb & back
 	for(int i = 1 ; i <= wid ; ++i)
 		for(int j = 1 ; j <= hei + 1 ; ++j)
+		{
 			fnb += std::abs(paper[j][i] - paper[j - 1][i]);
+			// std::cout << std::abs(paper[j][i] - paper[j - 1][i]) << std::endl;
+		}
 	//left & right
 	for(int i = 1 ; i <= hei ; ++i)
 		for(int j = 1 ; j <= wid + 1 ; ++j)
 			lnr += std::abs(paper[i][j] - paper[i][j - 1]);
 	result = und + fnb + lnr;
+	// std::cout << "fnb : " << fnb << ", lnr : " << lnr <<std::endl;
 	// std::cout << "all : " << und + fnb + lnr << std::endl;
 }
 
 void input()
 {
-	std::cin >> wid >> hei;
+	std::cin >> hei >> wid;
 	paper = std::vector(hei + 2, std::vector(wid + 2, 0));
 	for(int i = 1 ; i <= hei ; ++i)
 		for(int j = 1 ; j <= wid ; ++j)
