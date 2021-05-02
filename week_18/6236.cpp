@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-int N, M, result;
+int N, M, result, max;
 std::vector<int> money;
 
 void output()
@@ -11,14 +12,29 @@ void output()
 
 void solution()
 {
-	int left = 0, right = *std::max_element(money.begin(), money.end());
-	int sum = 0;
+	auto left = *std::max_element(money.begin(), money.end()), right = max;
+
 	while (left <= right)
 	{
-		int mid = (left + right) / 2;
+		auto mid = (left + right) / 2;
+		auto sum = 0, cnt = 1;
 
-
+		// std::cout << "mid : " << mid << std::endl;
+		for(auto& i : money)
+		{
+			if(sum  + i > mid)
+			{
+				sum = 0;
+				++cnt;
+			}
+			sum += i;
+		}
+		if (cnt <= M)
+			right = mid - 1;
+		else
+			left = mid + 1;
 	}
+	result = left;
 }
 
 void input()
@@ -26,7 +42,10 @@ void input()
 	std::cin >> N >> M;
 	money.resize(N);
 	for(auto& i : money)
+	{
 		std::cin >> i;
+		max += i;
+	}
 }
 
 void preset()
