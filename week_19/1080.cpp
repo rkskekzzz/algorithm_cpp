@@ -1,13 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
-std::vector<std::vector<int>> arr;
-std::vector<std::vector<int>> cmp;
+std::vector<std::string> arr;
+std::vector<std::string> cmp;
 int N, M, result;
 
 void output()
 {
-	std::cout << result;
+	if (arr != cmp)
+		std::cout << "-1";
+	else
+		std::cout << result;
 }
 
 void flip(int idx, int jdx)
@@ -17,9 +21,10 @@ void flip(int idx, int jdx)
 	{
 		for (int j = jdx; j < jdx + 3; ++j)
 		{
-			if (i >= N || j >= M)
-				continue;
-			arr[i][j] = !arr[i][j];
+			if (arr[i][j] == '0')
+				arr[i][j] = '1';
+			else
+				arr[i][j] = '0';
 		}
 	}
 }
@@ -30,9 +35,10 @@ void solution()
 	{
 		for (int j = 0; j < M; j++)
 		{
+			if (i + 2 >= N || j + 2 >= M)
+				break;
 			if (arr[i][j] != cmp[i][j])
 			{
-				std::cout << arr[i][j] << ", " << cmp[i][j]<< std::endl;
 				flip(i, j);
 			}
 		}
@@ -42,15 +48,12 @@ void solution()
 void input()
 {
 	std::cin >> N >> M;
-	std::cout <<"hello\n";
-	arr = std::vector(N, std::vector(M, 0));
-	cmp = std::vector(N, std::vector(M, 0));
+	arr.resize(N);
+	cmp.resize(N);
 	for (auto &i : arr)
-		for (auto &j : i)
-			std::cin >> j;
+		std::cin >> i;
 	for (auto &i : cmp)
-		for (auto &j : i)
-			std::cin >> j;
+		std::cin >> i;
 }
 
 void preset()
@@ -64,7 +67,7 @@ int main()
 {
 	preset();
 	input();
-	std::cout << "hello\n";
 	solution();
 	output();
 }
+
