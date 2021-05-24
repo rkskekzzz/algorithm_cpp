@@ -10,6 +10,7 @@ vector<vector<int>> visited;
 bool dfs(int x, int y, int depth)
 {
     visited[x][y] = 1;
+	
     cout << x << ", " << y << endl;
 	for (auto &k : dir)
 	{
